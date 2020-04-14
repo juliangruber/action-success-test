@@ -8,11 +8,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: This is successful
-        run: echo hi
+        id: diff
+        run: echo ::set-output name=continue::yes
       - name: This isn't
         run: cat /beep/boop
       - name: This should not run
         run: echo oops
       - name: This should also not run
-        if: 'a'
+        if: steps.diff.outputs.continue == 'yes'
         run: echo oops
