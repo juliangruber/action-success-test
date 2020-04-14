@@ -17,3 +17,6 @@ jobs:
       - name: This should also not run
         if: steps.diff.outputs.continue == 'yes'
         run: echo oops
+      - name: This should run anyway
+        if: failure()
+        run: echo hi
