@@ -1,0 +1,18 @@
+
+name: Test
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: This is successful
+        run: echo hi
+      - name: This isn't
+        run: cat /beep/boop
+      - name: This should not run
+        run: echo oops
+      - name: This should also not run
+        if: 'a'
+        run: echo oops
